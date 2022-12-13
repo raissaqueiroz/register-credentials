@@ -15,7 +15,4 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
 COPY --from=build . .
-# Padrão de container ASP.NET
-# ENTRYPOINT ["dotnet", "RegisterCredentials.dll"]
-# Opção utilizada pelo Heroku
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet RegisterCredentials.dll
+ENTRYPOINT ["dotnet", "RegisterCredentials.dll"]
