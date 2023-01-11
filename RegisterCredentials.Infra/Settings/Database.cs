@@ -6,7 +6,7 @@ using MongoDB.Driver;
 using MongoDB.Driver.Core.Misc;
 using System.Runtime.CompilerServices;
 
-namespace StoneCo.FinancialPositionHub.Infra.Settings
+namespace RegisterCredentials.Infra.Settings
 {
     public static class Database
     {

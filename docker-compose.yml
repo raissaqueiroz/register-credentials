@@ -24,8 +24,8 @@ services:
         dockerfile: Dockerfile
       restart: always
       ports:
-        - 7184:80
-      environment:
-        PORT: 80
+        - 7000:7000
+      env_file:
+        - .env
       # depends_on:
       #   - mongo

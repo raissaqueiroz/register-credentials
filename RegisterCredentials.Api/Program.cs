@@ -8,7 +8,6 @@ using MongoDB.Driver;
 using RegisterCredentials.Api.Middlewares;
 using RegisterCredentials.Infra.Settings;
 using Serilog;
-using StoneCo.FinancialPositionHub.Infra.Settings;
 
 //Logs Config
 var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
