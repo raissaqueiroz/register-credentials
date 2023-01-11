@@ -14,7 +14,6 @@ namespace StoneCo.FinancialPositionHub.Infra.Settings
 
         public static IServiceCollection ConfigureMongoDbRepositories(this IServiceCollection services, IConfiguration configuration)
         {
-            configuration.GetValue<string>("Database:ConnectionString");
             var db = GetMongoDatabase(configuration);
 
             var pack = new ConventionPack
