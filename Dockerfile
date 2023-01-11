@@ -1,18 +1,25 @@
-# https://hub.docker.com/_/microsoft-dotnet
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /source
 
-# copy csproj and restore as distinct layers
+WORKDIR /app
+
 COPY *.sln .
 COPY . .
-RUN dotnet restore
 
-RUN dotnet build -c Release -o out
+RUN dotnet restore "RegisterCredentials.Api/RegisterCredentials.Api.csproj"
+
+RUN dotnet test
+
+RUN dotnet build "RegisterCredentials.Api/RegisterCredentials.Api.csproj" -c Release -o /app/build
+
 FROM build AS publish
-RUN dotnet publish -c Release -o out
+RUN dotnet publish "RegisterCredentials.Api/RegisterCredentials.Api.csproj" -c Release -o /app/publish
 
-# final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
-COPY --from=build . .
-ENTRYPOINT ["dotnet", "RegisterCredentials.dll"]
+COPY --from=publish /app/publish .
+
+ENV ASPNETCORE_URLS http://*:7000
+
+EXPOSE 7000
+
+ENTRYPOINT ["dotnet", "RegisterCredentials.Api.dll"]

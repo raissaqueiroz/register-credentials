@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "4X16LOOTJh1A7fgqMDSlphDH0EC1AWc0HGzpftnlEn4Luilnr4Y35JyxW2olgtQbiw+HEqRC/i2ob+0gtLqEqQ==",
+  "dgSpecHash": "fUB3GJ6lxb7xAqYTV47YcnKwxr/rQaO5YTuoATOIW5uxEvWrdMDCzNhFrTBdxOxdHlr+6CSQj0Kk25Z9CI3iKg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\raissa.teixeira\\Desktop\\applications\\StoneCo\\Dojo\\RegisterCredentials\\RegisterCredentials.Infra\\RegisterCredentials.Infra.csproj",
+  "projectFilePath": "C:\\Users\\raissa.teixeira\\Desktop\\applications\\register-credentials\\RegisterCredentials.Infra\\RegisterCredentials.Infra.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.extensions.diagnostics.healthchecks.abstractions\\7.0.2\\microsoft.extensions.diagnostics.healthchecks.abstractions.7.0.2.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
@@ -21,6 +24,7 @@
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\raissa.teixeira\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
     "C:\\Users\\raissa.teixeira\\.nuget\\packages\\zstdsharp.port\\0.6.2\\zstdsharp.port.0.6.2.nupkg.sha512"
   ],
   "logs": []
