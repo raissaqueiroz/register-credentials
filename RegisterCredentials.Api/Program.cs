@@ -1,4 +1,5 @@
 
+using HealthChecks.MongoDb;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Configuration;
@@ -24,9 +25,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = config.GetValue<string>("Database:ConnectionString");
+var databaseName = config.GetValue<string>("Database:DatabaseName");
 builder.Services.ConfigureMongoDbRepositories(builder.Configuration, connectionString);
-builder.Services.AddHealthChecks().AddMongoDb(mongodbConnectionString: connectionString, name: "MongoDB", tags: new String[] {"db", "database", "mongo"});
+
 builder.Services.AddHealthChecksUI().AddInMemoryStorage();
+builder.Services
+    .AddHealthChecks()
+    .AddMongoDb(
+        connectionString,
+        name: "MongoDB",
+        failureStatus: HealthStatus.Unhealthy,
+        tags: new String[] { "database", "mongo" }
+    );
+
 builder.Services.AddLogging();
 builder.Host.UseSerilog();
 
@@ -47,23 +58,16 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+app
+    .UseHealthChecks("/health", new HealthCheckOptions()
+    {
+        Predicate = _ => true,
+        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+    })
+    .UseHealthChecksUI(options =>
+    {
+        options.UIPath = "/dashboard";
+    });
 
 app.MapControllers();
-
-app.MapHealthChecks("/health", new HealthCheckOptions()
-{
-    ResultStatusCodes =
-    {
-        [HealthStatus.Healthy] = StatusCodes.Status200OK,
-        [HealthStatus.Degraded] = StatusCodes.Status200OK,
-        [HealthStatus.Unhealthy] = StatusCodes.Status503ServiceUnavailable
-    },
-    Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
-
-app.UseHealthChecksUI(options =>
-{
-    options.UIPath = "/Dashboard";
-});
 app.Run();
