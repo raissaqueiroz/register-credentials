@@ -12,9 +12,9 @@ namespace RegisterCredentials.Infra.Settings
     {
         private static object _mapSyncRoot = new object();
 
-        public static IServiceCollection ConfigureMongoDbRepositories(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ConfigureMongoDbRepositories(this IServiceCollection services, IConfiguration configuration, string connectionString)
         {
-            var db = GetMongoDatabase(configuration);
+            var db = GetMongoDatabase(connectionString);
 
             var pack = new ConventionPack
             {
@@ -31,9 +31,8 @@ namespace RegisterCredentials.Infra.Settings
             return services;
         }
 
-        private static IMongoDatabase GetMongoDatabase(IConfiguration configuration)
+        private static IMongoDatabase GetMongoDatabase(string connectionString)
         {
-            var connectionString = configuration.GetSection("Database:ConnectionString").Value;
             var mongoUrl = MongoUrl.Create(connectionString);
             var client = new MongoClient(mongoUrl);
 

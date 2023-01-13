@@ -24,13 +24,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = config.GetValue<string>("Database:ConnectionString");
+builder.Services.ConfigureMongoDbRepositories(builder.Configuration, connectionString);
 builder.Services.AddHealthChecks().AddMongoDb(mongodbConnectionString: connectionString, name: "MongoDB", tags: new String[] {"db", "database", "mongo"});
 builder.Services.AddHealthChecksUI().AddInMemoryStorage();
 builder.Services.AddLogging();
 builder.Host.UseSerilog();
 
 //Add database connection 
-builder.Services.ConfigureMongoDbRepositories(builder.Configuration);
 
 var app = builder.Build();
 
