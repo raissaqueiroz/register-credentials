@@ -50,10 +50,9 @@ namespace RegisterCredentials.Infra.Extensions
         private static IMongoDatabase GetMongoDatabase(IConfiguration configuration)
         {
             var database = GetMongoDbConnectionString(configuration);
-            var mongoUrl = MongoUrl.Create(database.name);
-            var client = new MongoClient(mongoUrl);
+            var client = new MongoClient(database.connectionString);
 
-            return client.GetDatabase(mongoUrl.DatabaseName);
+            return client.GetDatabase(database.name);
         }
 
         private static void ConfigureMappers()
