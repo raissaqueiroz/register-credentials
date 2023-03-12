@@ -7,6 +7,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using RegisterCredentials.Api.Middlewares;
+using RegisterCredentials.Infra.Extensions;
 using RegisterCredentials.Infra.Settings;
 using Serilog;
 
@@ -18,29 +19,25 @@ Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(config).Enrich.Fro
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+//builder.Services.Configure<Database>(builder.Configuration.GetSection("Database"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-var connectionString = config.GetValue<string>("Database:ConnectionString");
-var databaseName = config.GetValue<string>("Database:DatabaseName");
-builder.Services.ConfigureMongoDbRepositories(builder.Configuration, connectionString);
+builder.Services.ConfigureMongoDbRepositories(builder.Configuration);
 
 builder.Services.AddHealthChecksUI().AddInMemoryStorage();
 builder.Services
     .AddHealthChecks()
     .AddMongoDb(
-        connectionString,
+        mongodbConnectionString: MongoDbConnectionExtensions.GetMongoDbConnectionString(builder.Configuration).connectionString,
         name: "MongoDB",
         failureStatus: HealthStatus.Unhealthy,
         tags: new String[] { "database", "mongo" }
-    );
+    ); ;
 
 builder.Services.AddLogging();
 builder.Host.UseSerilog();
-
 //Add database connection 
 
 var app = builder.Build();
