@@ -8,7 +8,7 @@ services:
         MONGO_INITDB_ROOT_PASSWORD: pa55word
         MONGO_INITDB_DATABASE: register-credentials
       ports:
-        - 27017:27017
+        - 27018:27017
   mongo-express:
       image: mongo-express
       restart: always
