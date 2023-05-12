@@ -20,6 +20,6 @@ COPY --from=publish /app/publish .
 
 ENV ASPNETCORE_URLS http://*:7000
 
-EXPOSE 7000
+EXPOSE 80
 
 ENTRYPOINT ["dotnet", "RegisterCredentials.Api.dll"]
