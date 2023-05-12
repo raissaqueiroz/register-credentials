@@ -9,6 +9,11 @@ services:
         MONGO_INITDB_DATABASE: register-credentials
       ports:
         - 27018:27017
+      healthcheck:
+        test: ["CMD", "mongo", "--eval", "db.stats().ok"]
+        interval: 30s
+        timeout: 10s
+        retries: 5
   mongo-express:
       image: mongo-express
       restart: always
@@ -31,3 +36,11 @@ services:
         - .env
       depends_on:
         - mongo
+   healthchecks-ui:
+      image: healthchecksui
+      ports:
+        - "5001:80"
+      depends_on:
+        - app
+      environment:
+        HealthChecks-UI__HealthChecks__Endpoint: http://register-credentials-server:80/health
