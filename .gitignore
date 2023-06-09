@@ -367,3 +367,7 @@ RegisterCredentials.Api/obj
 RegisterCredentials.Api/bin
 RegisterCredentials.Domain/obj
 RegisterCredentials.Domain/bin
+RegisterCredentials.Infra/obj
+RegisterCredentials.Infra/bin
+.vs
+
