@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+
+RegisterCredentials.Api/obj
+RegisterCredentials.Api/bin
+RegisterCredentials.Domain/obj
+RegisterCredentials.Domain/bin
