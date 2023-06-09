@@ -1,14 +1,8 @@
-
-using HealthChecks.MongoDb;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
 using RegisterCredentials.Api.Middlewares;
 using RegisterCredentials.Infra.Extensions;
-using RegisterCredentials.Infra.Settings;
 using Serilog;
 
 //Logs Config
