@@ -10,7 +10,7 @@ services:
       ports:
         - 27017:27017
       healthcheck:
-        test: ["CMD", "curl", "-f", "register-credentials.onrender.com:7000/health"]
+        test: echo 'db.runCommand({serverStatus:1}).ok' | mongosh admin -u $$MONGO_INITDB_ROOT_USERNAME -p $$MONGO_INITDB_ROOT_PASSWORD --quiet | grep 1
         interval: 5s,
         timout: 10s,
         start-period: 0s,
