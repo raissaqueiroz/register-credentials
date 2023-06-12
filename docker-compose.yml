@@ -9,6 +9,12 @@ services:
         MONGO_INITDB_DATABASE: register-credentials
       ports:
         - 27017:27017
+      healthcheck:
+        test: curl --fail http://localhost || exit 1,
+        interval: 5s,
+        timout: 10s,
+        start-period: 0s,
+        retries: 5
   mongo-express:
       image: mongo-express
       restart: always

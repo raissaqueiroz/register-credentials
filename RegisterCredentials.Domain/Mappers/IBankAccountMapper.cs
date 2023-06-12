@@ -4,7 +4,7 @@ namespace RegisterCredentials.Domain.Mappers
 {
     public interface IBankAccountMapper
     {
-        AccountType Map(int bankAccountTypeId);
-        AccountType? GetBankAccountId(int bankAccountTypeId)
+        AccountType? Map(int bankAccountTypeId);
+        AccountType? GetBankAccountId(int bankAccountTypeId);
     }
 }
